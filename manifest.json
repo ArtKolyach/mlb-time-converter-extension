@@ -1,0 +1,27 @@
+{
+  "name": "MLB Time Converter",
+  "description": "Изменяет время матчей с сайта MLB на Мск",
+  "version": "0.0.1",
+  "manifest_version": 3,
+
+  "content_scripts": [ {
+    "matches": [
+      "https://www.mlb.com/*"
+      ],
+    "js": [
+      "module.js"
+    ]
+  }],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "main.js",
+        "schedule-change-time.js",
+        "format-time-function.js"
+      ],
+      "matches": [
+        "https://www.mlb.com/*"
+      ]
+    }
+  ]
+}
