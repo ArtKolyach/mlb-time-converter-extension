@@ -74,8 +74,6 @@ const formatTime = (oldTimeStamp) => {
 
     dayHasChanged = localOldDate.getDate() !== oldDate.getDate();
 
-    console.log(localOldDate.getDate(), oldDate.getDate());
-
     return convertDateToTimeText(localOldDate);
 
 }
@@ -103,13 +101,26 @@ const changeTime = () => {
 
     const gameTimeFields = document.querySelectorAll(querySelector);
 
+    if (!gameTimeFields[0]) {
+        return;
+    }
+
     for (let gameTime of gameTimeFields) {
         if (!isNaN(Number(gameTime.textContent[0]))) {
             gameTime.textContent = formatTime(gameTime.textContent);
         }
     }
-    console.log('НАСЕРЕНО В formatAllTimes', url, querySelector);
 }
 
 // EXECUTION
-window.onload = changeTime;
+window.onload = () => {
+    changeTime();
+
+    // Checking if page of schedule has been changed
+    let grid = document.getElementById('gridWrapper');
+    if (grid) {
+        const config = {attributes: false, childList: true, subtree: false};
+        const observer = new MutationObserver(changeTime);
+        observer.observe(grid, config);
+    }
+}
