@@ -1,3 +1,14 @@
+const ET_TO_UTC_DIFF_IN_MIN = 300;
+const LocalToUTC = new Date().getTimezoneOffset();
+const ETtoLocal = ET_TO_UTC_DIFF_IN_MIN - LocalToUTC;
+console.log(ETtoLocal);
+
+const convertETToLocal = (date) => { //КОНВЕРТАЦИЯ Date В ЛОКАЛЬНОЕ ВРЕМЯ Date
+    const convertedDate = new Date(date);
+    convertedDate.setMinutes(date.getMinutes() + ETtoLocal);
+    return new Date(convertedDate);
+}
+
 const formatTime = (oldTimeStamp) => {
 
     let hour = Number(oldTimeStamp[0]);
@@ -14,7 +25,7 @@ const formatTime = (oldTimeStamp) => {
 }
 
 const url = window.location.href;
-const SCHEDULE_URL = 'https://www.mlb.com/schedule/';
+const SCHEDULE_URL = 'https://www.mlb.com/schedule';
 const MAIN_PAGE_URL = 'https://www.mlb.com/';
 
 const getQuerySelector = (url) => {
