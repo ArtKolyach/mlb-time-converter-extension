@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  const ET_TO_UTC_DIFF_IN_MIN = 300;
+  const LocalToUTC = new Date().getTimezoneOffset();
+  const ETtoLocal = ET_TO_UTC_DIFF_IN_MIN - LocalToUTC;
+  console.log(ETtoLocal);
+
+  const convertETToLocal = (date) => {
+      const convertedDate = new Date(date);
+      convertedDate.setMinutes(date.getMinutes() + ETtoLocal);
+      return new Date(convertedDate);
+  }
+
+  const ETDate = new Date(2012,2,23,10,35);
+  console.log("ETDate: " + ETDate);
+
+  const localDate = convertETToLocal(ETDate);
+  console.log("localDate: " + localDate);
+
+  console.log(ETDate, localDate);
+</script>
+</body>
+</html>
