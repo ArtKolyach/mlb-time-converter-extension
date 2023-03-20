@@ -28,7 +28,7 @@ const convertToDate = (timeText) => {
 
 
 // Get timezone offset in minutes
-const ET_TO_UTC_DIFF_IN_MIN = 300;
+const ET_TO_UTC_DIFF_IN_MIN = 240;
 const LocalToUTC = new Date().getTimezoneOffset();
 const ETtoLocal = ET_TO_UTC_DIFF_IN_MIN - LocalToUTC;
 console.log(ETtoLocal);
@@ -115,6 +115,7 @@ const changeTime = () => {
 // EXECUTION
 window.onload = () => {
     changeTime();
+    setTimeout(() => console.log('ЗАГРУЖЕНО'), 3000);
 
     // Checking if page of schedule has been changed
     let grid = document.getElementById('gridWrapper');
@@ -124,3 +125,5 @@ window.onload = () => {
         observer.observe(grid, config);
     }
 }
+
+
