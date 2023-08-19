@@ -112,9 +112,38 @@ const changeTime = () => {
     }
 }
 
+// CHANGE PLAYER PARAMS
+if (url.includes('/player/')) {
+
+    const params = document.querySelector('.player-header--vitals-height')
+
+    const heightFeet = params.textContent.split(`"`)[0].split(`'`)[0]
+    const heightInches = params.textContent.split(`"`)[0].split(`'`)[1]
+    const weightLbs = params.textContent.split('/')[1]
+
+    const heightCm = Math.floor(heightFeet * 30.48 + heightInches * 2.54)
+    const weightKg = Math.floor(weightLbs * 0.45)
+
+    console.log(heightFeet, '|', heightInches, '|', weightLbs)
+    console.log(`${heightCm} sm/${weightKg} kg`)
+
+    const tipTool = document.createElement('div')
+    tipTool.classList.add('params-tiptool')
+    tipTool.textContent = `${heightCm} cm/${weightKg} kg`
+    params.append(tipTool)
+
+    params.addEventListener('click', (e) => {
+        (e.target.classList.contains('clicked'))
+            ? e.target.classList.remove('clicked')
+            : e.target.classList.add('clicked')
+    })
+} else console.log('не плеер')
+
+
 // EXECUTION
 window.onload = () => {
     changeTime();
+    changePlayerParams()
     setTimeout(() => console.log('ЗАГРУЖЕНО'), 3000);
 
     // Checking if page of schedule has been changed

@@ -1,0 +1,27 @@
+.params-tiptool {
+    display: none;
+    position: absolute;
+    background: #ffffff;
+    color: black;
+    padding: 5px 12px;
+    margin-top: 11px;
+    margin-left: -5px;
+    border-radius: 16px;
+    text-shadow: none;
+    box-shadow: 1px 1px 8px black;
+    font-weight: 600;
+    cursor: text;
+}
+
+.player-header--vitals-height {
+    cursor: pointer;
+    text-decoration: underline dashed 2px;
+}
+
+.player-header--vitals-height:hover .params-tiptool {
+    display: block;
+}
+
+.player-header--vitals-height.clicked .params-tiptool {
+    display: block;
+}

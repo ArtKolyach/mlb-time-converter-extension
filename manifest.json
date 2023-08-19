@@ -7,11 +7,13 @@
     {
       "matches": [
         "https://www.mlb.com/",
-        "https://www.mlb.com/schedule/*"
+        "https://www.mlb.com/schedule/*",
+        "https://www.mlb.com/player/*"
       ],
       "js": [
         "main-script.js"
-      ]
+      ],
+      "css": ["styles.css"]
     }
   ]
 }
